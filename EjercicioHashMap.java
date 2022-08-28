@@ -1,7 +1,15 @@
 package POO1;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
 
 public class EjercicioHashMap {
 
@@ -36,7 +44,43 @@ public class EjercicioHashMap {
 		cursos.put(2, curso2);
 		cursos.put(3, curso3);
 		cursos.put(4, curso4);
+		existeAlumno(cursos, "maricarmen");
+		
+		ordenado(cursos);
+		
 
+	}
+	
+	public static boolean existeAlumno(HashMap<Integer, ArrayList<String>> curso, String nombre) {	
+		//List<String> listaAlumnos = curso.get(1);
+		//LinkedList<String> linkedAlumnos = new LinkedList<>(listaAlumnos);		
+		for (Integer numCurso : curso.keySet()) {
+			Iterator<String> it = curso.get(numCurso).iterator();
+
+			while (it.hasNext()) {
+				String nombreAlumno = it.next();
+				if (nombreAlumno.equalsIgnoreCase(nombre)) {
+					System.out.println("El alumno " + nombre + " está dado de alta en un curso " + numCurso);
+					return true;
+				}
+			}
+		}
+
+		System.out.println("El alumno no existe en ningún curso.");
+		return false;
+	}
+	
+	public static void ordenado (HashMap<Integer, ArrayList<String>> curso) {
+		for (Integer numCurso : curso.keySet()) {
+			ArrayList<String> listaNombre = curso.get(numCurso);
+			listaNombre.sort(null);
+			for(String nomCursos : curso.get(numCurso)) {
+				System.out.println(nomCursos);
+				
+			}
+		}
+		
+		
 	}
 
 }
