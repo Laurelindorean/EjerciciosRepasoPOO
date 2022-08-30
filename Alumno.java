@@ -1,12 +1,13 @@
 package POO1;
 
-public class Alumno {
-	
-	
+import java.util.Comparator;
+
+public class Alumno implements Comparator<Alumno> {
+
 	private String nombre;
 	private String apellido;
 	private String edad;
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -32,14 +33,23 @@ public class Alumno {
 	}
 
 	public Alumno() {
-		
+
 	}
-	
+
 	public Alumno(String nombre, String apellido, String edad) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
 	}
 	
+	@Override
+	public String toString() {
+		return "Alumno [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + "]";
+	}
+
+	@Override
+	public int compare(Alumno o1, Alumno o2) {
+		return o1.getNombre().compareToIgnoreCase(o2.getNombre());
+	}
 
 }

@@ -1,7 +1,9 @@
 package POO1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class EjercicioHashMap2 {
 
@@ -42,16 +44,36 @@ public class EjercicioHashMap2 {
 		curso3.add(alumno10);
 		curso3.add(alumno11);
 		curso3.add(alumno12);
-		
+
 		curso.put("Curso 1", curso1);
 		curso.put("Curso 2", curso2);
 		curso.put("Curso 3", curso3);
-
+		existeAlumno(curso, "Juan");
+		ordenado(curso);
+		System.out.println(curso);
 	}
+
 	public static boolean existeAlumno(HashMap<String, ArrayList<Alumno>> curso, String nombre) {
-		
-		
-		return true;
+
+		for (String numCurso : curso.keySet()) {
+			Iterator<Alumno> it = curso.get(numCurso).iterator();
+			while (it.hasNext()) {
+				Alumno nombreAlumno = it.next();
+				if (nombreAlumno.getNombre().equalsIgnoreCase(nombre)) {
+					System.out.println("El alumno " + nombre + " está dado de alta en un curso " + numCurso);
+					return true;
+				}
+			}
+		}
+		System.out.println("El alumno no existe en ningún curso.");
+		return false;
+	}
+	
+	public static void ordenado(HashMap<String, ArrayList<Alumno>> curso) {
+		for(String numCurso : curso.keySet()) {
+			ArrayList listaNombre = curso.get(numCurso);
+			listaNombre.sort(new Alumno());
+		}
 	}
 
 }
