@@ -1,15 +1,15 @@
-package POO1;
+package EstructuraDatos;
 
 public class Lavadora {
 	private String marca;
 	private int potencia;
-	private String añoFabricacion;
+	private String anioFabricacion;
 	private int carga;
 	
-	public Lavadora(String marca, int potencia, String añoFabricacion, int carga) {
+	public Lavadora(String marca, int potencia, String anioFabricacion, int carga) {
 		this.marca = marca;
 		this.potencia = potencia;
-		this.añoFabricacion = añoFabricacion;
+		this.anioFabricacion = anioFabricacion;
 		this.carga= carga;
 	}
 	public Lavadora() {
