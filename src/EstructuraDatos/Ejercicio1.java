@@ -1,4 +1,4 @@
-package POO1;
+package EstructuraDatos;
 
 public class Ejercicio1 {
 

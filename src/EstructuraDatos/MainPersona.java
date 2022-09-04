@@ -1,4 +1,4 @@
-package POO1;
+package EstructuraDatos;
 
 import javax.swing.JOptionPane;
 

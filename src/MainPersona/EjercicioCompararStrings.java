@@ -1,9 +1,6 @@
-package POO1;
+package MainPersona;
 
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class EjercicioCompararStrings {
 
@@ -32,51 +29,44 @@ public class EjercicioCompararStrings {
 
 		int valor = 1;
 		if (palabra1.length() < palabra2.length()) {
-			for (int i = 0; i < palabra1.length(); i++) {
-				if (palabra1.charAt(i) == palabra2.charAt(i)) {
-					valor = -1;
-
-				} else {
-					char letra1 = palabra1.charAt(i);
-					char letra2 = palabra2.charAt(i);
-					valor = (int) letra1 - (int) letra2;
-					break;
-				}
-			}
+			valor = -1;
+			valor = analizarStrings(palabra1, palabra2, valor);
 		} else if (palabra1.length() > palabra2.length()) {
-			for (int i = 0; i < palabra2.length(); i++) {
-				if (palabra1.charAt(i) == palabra2.charAt(i)) {
-					valor = 1;
-
-				} else {
-					char letra1 = palabra1.charAt(i);
-					char letra2 = palabra2.charAt(i);
-					valor = (int) letra1 - (int) letra2;
-					break;
-				}
-			}
+			valor = 1;
+			valor = analizarStrings(palabra1, palabra2, valor);
 		} else if (palabra1.length() == palabra2.length()) {
-			for (int i = 0; i < palabra1.length(); i++) {
-				if (palabra1.charAt(i) == palabra2.charAt(i)) {
-					valor = 0;
+			valor = 0;
+			valor = analizarStrings(palabra1, palabra2, valor);
+		}
+		
+		return convertNumToOneOrZero(valor);
+	}
 
-				} else {
-					char letra1 = palabra1.charAt(i);
-					char letra2 = palabra2.charAt(i);
-					valor = (int) letra1 - (int) letra2;
-					break;
+	private static int analizarStrings(String palabra1, String palabra2, int valor) {
+		int lim = palabra1.length() < palabra2.length() ? palabra1.length():palabra2.length();
+		for (int i = 0; i < lim; i++) {
+			if (palabra1.charAt(i) != palabra2.charAt(i)) {
+				char letra1 = palabra1.charAt(i);
+				char letra2 = palabra2.charAt(i);
+				valor = (int) letra1 - (int) letra2;
+				break;
 
-				}
 			}
 		}
-		if (valor < 0) {
-			return -1;
-		} else if (valor > 0) {
-			return 1;
-		} else {
-			return 0;
-		}
+		
+		return valor;
+	}
 
+	/**
+	 * @param valor
+	 * @return
+	 */
+	private static int convertNumToOneOrZero(int valor) {
+		if(valor != 0) {
+			return (valor > 0) ? 1:-1;			
+		}
+		
+		return valor;
 	}
 
 	public static String pedirDatos() {
