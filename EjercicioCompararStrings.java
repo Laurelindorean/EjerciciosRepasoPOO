@@ -2,6 +2,7 @@ package POO1;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class EjercicioCompararStrings {
@@ -9,25 +10,32 @@ public class EjercicioCompararStrings {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int valorPalabra;
-		valorPalabra = comparaString("anaLi", "anal");
+		String palabra1;
+		String palabra2;
+		System.out.println("Escribe una palabra");
+		palabra1 = pedirDatos();
+		System.out.println("Escribe otra palabra");
+		palabra2 = pedirDatos();
+
+		valorPalabra = comparaString(palabra1, palabra2);
 		if (valorPalabra < 0) {
-			System.out.println("La primera palabra va antes que la segunda");
+			System.out.println(palabra1 + " va antes que " + palabra2);
 		} else if (valorPalabra > 0) {
-			System.out.println("La segunda palabra va antes que la primera");
-		} else if(valorPalabra == 0) {
+			System.out.println(palabra2 + " va antes que " + palabra1);
+		} else if (valorPalabra == 0) {
 			System.out.println("Las palabras son iguales");
 		}
 
 	}
 
 	public static int comparaString(String palabra1, String palabra2) {
-	
+
 		int valor = 1;
 		if (palabra1.length() < palabra2.length()) {
 			for (int i = 0; i < palabra1.length(); i++) {
-				if ( palabra1.charAt(i) ==  palabra2.charAt(i)) {
+				if (palabra1.charAt(i) == palabra2.charAt(i)) {
 					valor = -1;
-			
+
 				} else {
 					char letra1 = palabra1.charAt(i);
 					char letra2 = palabra2.charAt(i);
@@ -37,7 +45,7 @@ public class EjercicioCompararStrings {
 			}
 		} else if (palabra1.length() > palabra2.length()) {
 			for (int i = 0; i < palabra2.length(); i++) {
-				if ( palabra1.charAt(i) == palabra2.charAt(i)) {
+				if (palabra1.charAt(i) == palabra2.charAt(i)) {
 					valor = 1;
 
 				} else {
@@ -49,9 +57,9 @@ public class EjercicioCompararStrings {
 			}
 		} else if (palabra1.length() == palabra2.length()) {
 			for (int i = 0; i < palabra1.length(); i++) {
-				if ( palabra1.charAt(i) ==  palabra2.charAt(i)) {
+				if (palabra1.charAt(i) == palabra2.charAt(i)) {
 					valor = 0;
-					
+
 				} else {
 					char letra1 = palabra1.charAt(i);
 					char letra2 = palabra2.charAt(i);
@@ -69,6 +77,13 @@ public class EjercicioCompararStrings {
 			return 0;
 		}
 
+	}
+
+	public static String pedirDatos() {
+		Scanner sc = new Scanner(System.in);
+		String datos;
+		datos = sc.next();
+		return datos;
 	}
 
 }
